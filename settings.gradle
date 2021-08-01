@@ -1,5 +1,7 @@
 pluginManagement {
 	repositories {
+		maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+		maven { url 'https://maven.aliyun.com/nexus/content/repositories/jcenter' }
 		mavenCentral()
 		gradlePluginPortal()
 		maven {
@@ -83,3 +85,12 @@ file("${rootDir}/spring-boot-project/spring-boot-starters").eachDirMatch(~/sprin
 file("${rootDir}/spring-boot-tests/spring-boot-smoke-tests").eachDirMatch(~/spring-boot-smoke-test.*/) {
 	include "spring-boot-tests:spring-boot-smoke-tests:${it.name}"
 }
+include 'spring-boot-project:hongjf'
+findProject(':spring-boot-project:hongjf')?.name = 'hongjf'
+include 'spring-boot-project:spring-boot-starters:hongjf-starter'
+findProject(':spring-boot-project:spring-boot-starters:hongjf-starter')?.name = 'hongjf-starter'
+include 'spring-boot-tests:spring-boot-smoke-tests:hongjf-test'
+findProject(':spring-boot-tests:spring-boot-smoke-tests:hongjf-test')?.name = 'hongjf-test'
+include 'spring-boot-project:spring-boot-starters:hongjf-boot-starter'
+findProject(':spring-boot-project:spring-boot-starters:hongjf-boot-starter')?.name = 'hongjf-boot-starter'
+
